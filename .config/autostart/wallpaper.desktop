@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
-Name=Murmur Colemak Arrows
-Comment=Apply custom XKB key mappings
-Exec=/bin/bash -lc "CALLEDBYAUTOSTART=1 $HOME/.xprofile"
+Name=setwp
+Comment=Apply wp
+Exec=/bin/bash -lc 'wpbg'
 Hidden=false
 NoDisplay=true
 X-GNOME-Autostart-enabled=true
