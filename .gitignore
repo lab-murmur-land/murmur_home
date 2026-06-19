@@ -27,7 +27,11 @@
 
 !.local/
 !.local/etc/test
+!.local/share/
+!.local/share/applications/
 !.local/share/applications/test
+!.local/share/applications/vscode-custom.desktop
+
 
 !.bash_profile
 !.bash_aliases
