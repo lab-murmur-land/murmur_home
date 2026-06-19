@@ -31,7 +31,7 @@
 !.local/share/applications/
 !.local/share/applications/test
 !.local/share/applications/vscode-custom.desktop
-
+!.local/share/applications/vivaldi-stable.desktop
 
 !.bash_profile
 !.bash_aliases
