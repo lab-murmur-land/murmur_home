@@ -1,9 +1,43 @@
+list(){
+	echo "Available shortcuts:"
+	echo "1: murmurkb_trio500.xkb"
+	echo -e "2: murmurkb_magickb.xkb\n"
+	echo "Other: Provide a custom suffix to load a specific xkb file (e.g., 'name' for murmurkb_name.xkb)."
+	echo -e "Available files in $HOME/.config/xkb:\n"
+	ls -l "$HOME/.config/xkb/"murmurkb*.xkb
+
+}
+
 # Murmur Colemak Arrows - XKB overlay
 echo "[$(date)] xprofile ran on DISPLAY=$DISPLAY" >> "$HOME/.config/xkb/xprofile.log"
 # setxkbmap -I$HOME/.xkb -rules evdev -layout test.xkb -variant arrows -option lv3:rwin_switch -print | xkbcomp -I$HOME/.xkb - $DISPLAY 
 # xkbcomp  -I$HOME/.xkb $HOME/.xkb/murmurkb.xkb $DISPLAY
 #setxkbmap -layout test -variant arrows -option lv3:rwin_switch,ctrl:swap_lwin_lctl -print | xkbcomp -I"$HOME/.config/xkb" - $DISPLAY 2>/dev/null
-xkbcomp -I"$HOME/.config/xkb" "$HOME/.config/xkb/murmurkb.xkb" "$DISPLAY" &> "$HOME/.config/xkb/xprofile.err.log"
+if [ -z "$1" ]; then
+	echo -e "No argument provided, please provide an argument\n"
+	list
+	return 1
+fi
+
+#shortcuts
+if [ "$1" = "1" ]; then
+	suffix="_trio500"
+elif [ "$1" = "2" ]; then
+	suffix="_magickb"
+else
+	suffix="$1"
+fi
+
+if [ ! -f "$HOME/.config/xkb/murmurkb$suffix.xkb" ]; then
+	echo -e "Error: File $HOME/.config/xkb/murmurkb$suffix.xkb does not exist.\n"
+
+	list
+	return 1
+fi
+
+echo "Loading xkb file: $HOME/.config/xkb/murmurkb$suffix.xkb"
+ls -l "$HOME/.config/xkb/murmurkb$suffix.xkb"
+xkbcomp -I"$HOME/.config/xkb" "$HOME/.config/xkb/murmurkb$suffix.xkb" "$DISPLAY" &> "$HOME/.config/xkb/xprofile.err.log"
 echo "[$(date)] xkbcomp exit code: $?" >> "$HOME/.config/xkb/xprofile.log"
 
 >>"$HOME/created_by_xprofile.log" echo "CALLEDBYAUTOSTART=$CALLEDBYAUTOSTART $(date)"
