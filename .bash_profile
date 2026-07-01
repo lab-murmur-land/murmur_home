@@ -97,3 +97,5 @@ alias doorbellcat1='firefox -new-window https://i1.sndcdn.com/artworks-CRPdY5qe2
 alias doorbellcat2='xdg-open https://i1.sndcdn.com/artworks-CRPdY5qe2qqO4kDy-9FQlyw-t1080x1080.jpg &>/dev/null &'
 
 source ~/.murmurbox/loader.bash
+
+. "$HOME/.local/bin/env"
