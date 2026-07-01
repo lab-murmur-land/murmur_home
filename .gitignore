@@ -29,6 +29,9 @@
 !.local/etc/test
 !.local/share/applications/test
 
+!.ssh/
+!.ssh/sshd_config
+
 !.bash_profile
 !.bash_aliases
 !.bashrc
