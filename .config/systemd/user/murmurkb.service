@@ -1,0 +1,13 @@
+[Unit]
+Description=Murmur Colemak Arrows - Apply custom XKB key mappings
+After=graphical-session.target gnome-session.target org.gnome.SettingsDaemon.Keyboard.target
+PartOf=graphical-session.target
+
+[Service]
+Type=oneshot
+Environment=CALLEDBYAUTOSTART=1
+ExecStart=/bin/bash -lc "murmurkb 1"
+RemainAfterExit=yes
+
+[Install]
+WantedBy=graphical-session.target gnome-session.target
